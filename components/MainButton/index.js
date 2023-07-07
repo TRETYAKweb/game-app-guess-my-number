@@ -11,7 +11,7 @@ export const MainButton = ({ children, onPress }) => {
             : styles.btnInnerContainer
         }
         onPress={onPress}
-        android_ripple={{ color: "#640233" }}
+        android_ripple={styles.androidRipple}
       >
         <Text style={styles.btnText}>{children}</Text>
       </Pressable>
