@@ -6,7 +6,7 @@ import { MainButton } from "../../components";
 // Styles
 import { styles } from "./styles";
 
-export const StartGameScreen = () => {
+export const StartGameScreen = ({ onPickNumber }) => {
   const [enteredNumber, setEnteredNumber] = useState("");
 
   const numberInputHandler = (inputText) => {
@@ -35,7 +35,7 @@ export const StartGameScreen = () => {
       return;
     }
 
-    console.log("Valid Number!");
+    onPickNumber(chosenNumber);
   };
 
   return (
