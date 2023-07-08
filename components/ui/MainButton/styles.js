@@ -2,7 +2,7 @@
 import { StyleSheet } from "react-native";
 
 // constants
-import { colors } from "../../constants";
+import { colors } from "../../../constants";
 
 export const styles = StyleSheet.create({
   btnOtherContainer: {

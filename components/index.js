@@ -1,2 +1,2 @@
-export { MainButton } from "./MainButton";
-export { Title } from "./Title";
+export { MainButton, Title } from "./ui";
+export { NumberContainer } from "./game/NumberContainer";
