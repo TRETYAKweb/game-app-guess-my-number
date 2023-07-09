@@ -2,28 +2,13 @@
 import { StyleSheet } from "react-native";
 
 // Constants
-
 import { colors } from "../../constants";
 
 export const styles = StyleSheet.create({
-  sukaContainer: {
-    marginTop: 50,
-    marginHorizontal: 24,
-    padding: 16,
-    backgroundColor: colors.main800,
-    borderRadius: 8,
-    shadowColor: "black",
-    shadowRadius: 6,
-    shadowOpacity: 0.2,
-    shadowOffset: { width: 10, height: 10 },
-    elevation: 10,
+  rootContainer: {
+    flex: 1,
+    marginTop: 100,
     alignItems: "center",
-  },
-
-  startGameTitle: {
-    color: colors.accent500,
-    fontSize: 28,
-    fontWeight: "300",
   },
   textInput: {
     width: 50,
