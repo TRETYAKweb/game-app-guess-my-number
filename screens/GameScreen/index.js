@@ -1,9 +1,16 @@
 // Core
 import { useEffect, useState } from "react";
-import { Alert, Text, View } from "react-native";
+import { Alert, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 // components
-import { MainButton, NumberContainer, Title } from "../../components";
+import {
+  MainButton,
+  NumberContainer,
+  Title,
+  InstructionText,
+  Card,
+} from "../../components";
 
 // styles
 import { styles } from "./styles";
@@ -64,17 +71,23 @@ export const GameScreen = ({ useNumber, onGameOver }) => {
     <View style={styles.screen}>
       <Title>Opponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
-      <View>
-        <Text>Higher or lower</Text>
-        <View>
-          <MainButton onPress={nextGuessHandler.bind(this, "lower")}>
-            -
-          </MainButton>
-          <MainButton onPress={nextGuessHandler.bind(this, "greater")}>
-            +
-          </MainButton>
+      <Card>
+        <InstructionText style={styles.instructionText}>
+          Higher or lower
+        </InstructionText>
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <MainButton onPress={nextGuessHandler.bind(this, "lower")}>
+              <Ionicons name="remove" size={24} color="white" />
+            </MainButton>
+          </View>
+          <View style={styles.buttonContainer}>
+            <MainButton onPress={nextGuessHandler.bind(this, "greater")}>
+              <Ionicons name="add" size={24} color="white" />
+            </MainButton>
+          </View>
         </View>
-      </View>
+      </Card>
       {/* <View>Log Rounds</View> */}
     </View>
   );
