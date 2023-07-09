@@ -6,4 +6,13 @@ export const styles = StyleSheet.create({
     padding: 24,
     marginTop: 25,
   },
+  instructionText: {
+    marginBottom: 15,
+  },
+  buttonsContainer: {
+    flexDirection: "row",
+  },
+  buttonContainer: {
+    flex: 1,
+  },
 });
