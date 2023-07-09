@@ -6,9 +6,9 @@ import { colors } from "../../../constants";
 
 export const styles = StyleSheet.create({
   title: {
+    fontFamily: "open-sans-bold",
     padding: 15,
     fontSize: 24,
-    fontWeight: "bold",
     color: colors.white,
     textAlign: "center",
     borderWidth: 2,
