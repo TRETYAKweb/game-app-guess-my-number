@@ -1,2 +1,2 @@
 export { MainButton, Title, Card, InstructionText } from "./ui";
-export { NumberContainer } from "./game/NumberContainer";
+export { NumberContainer, GuessLogItem } from "./game";
