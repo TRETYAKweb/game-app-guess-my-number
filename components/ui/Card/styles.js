@@ -1,12 +1,15 @@
 // Core
+import { Dimensions } from "react-native";
 import { StyleSheet } from "react-native";
 
 // Constants
 import { colors } from "../../../constants";
 
+const deviceWidth = Dimensions.get("window").width;
+
 export const styles = StyleSheet.create({
   sukaContainer: {
-    marginTop: 25,
+    marginTop: deviceWidth < 380 ? 15 : 25,
     marginHorizontal: 24,
     padding: 16,
     backgroundColor: colors.main800,
