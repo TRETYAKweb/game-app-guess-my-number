@@ -1,6 +1,6 @@
 // Core
 import { useEffect, useState } from "react";
-import { Alert, View, FlatList } from "react-native";
+import { Alert, View, FlatList, useWindowDimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 // components
@@ -34,6 +34,8 @@ export const GameScreen = ({ useNumber, onGameOver }) => {
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
   const [guessRaunds, setGuessRaunds] = useState([initialGuess]);
 
+  const { width } = useWindowDimensions();
+
   const guessRaundsLength = guessRaunds.length;
 
   const nextGuessHandler = (value) => {
@@ -66,20 +68,8 @@ export const GameScreen = ({ useNumber, onGameOver }) => {
     setGuessRaunds((prevGuess) => [nextRndNumber, ...prevGuess]);
   };
 
-  useEffect(() => {
-    if (currentGuess === useNumber) {
-      onGameOver(guessRaundsLength);
-    }
-  }, [currentGuess, useNumber, onGameOver]);
-
-  useEffect(() => {
-    minBoundary = 1;
-    maxBoundary = 100;
-  }, []);
-
-  return (
-    <View style={styles.screen}>
-      <Title>Opponent's Guess</Title>
+  let contentJSX = (
+    <>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card>
         <InstructionText style={styles.instructionText}>
@@ -98,7 +88,48 @@ export const GameScreen = ({ useNumber, onGameOver }) => {
           </View>
         </View>
       </Card>
-      <View style={styles.flatListContainer}>
+    </>
+  );
+
+  if (width > 500) {
+    contentJSX = (
+      <>
+        <View style={styles.buttonsContainerWide}>
+          <View style={styles.buttonContainer}>
+            <MainButton onPress={nextGuessHandler.bind(this, "lower")}>
+              <Ionicons name="remove" size={24} color="white" />
+            </MainButton>
+          </View>
+          <NumberContainer style={{ marginBottom: width > 500 ? 15 : 24 }}>
+            {currentGuess}
+          </NumberContainer>
+          <View style={styles.buttonContainer}>
+            <MainButton onPress={nextGuessHandler.bind(this, "greater")}>
+              <Ionicons name="add" size={24} color="white" />
+            </MainButton>
+          </View>
+        </View>
+      </>
+    );
+  }
+  useEffect(() => {
+    if (currentGuess === useNumber) {
+      onGameOver(guessRaundsLength);
+    }
+  }, [currentGuess, useNumber, onGameOver]);
+
+  useEffect(() => {
+    minBoundary = 1;
+    maxBoundary = 100;
+  }, []);
+
+  return (
+    <View style={[styles.screen, { padding: width > 500 ? 5 : 24 }]}>
+      <Title>Opponent's Guess</Title>
+      {contentJSX}
+      <View
+        style={[styles.flatListContainer, { marginTop: width > 500 ? 0 : 30 }]}
+      >
         <FlatList
           data={guessRaunds}
           renderItem={(itemData) => (
