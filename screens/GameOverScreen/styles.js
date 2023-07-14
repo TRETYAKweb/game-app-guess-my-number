@@ -2,16 +2,14 @@ import { StyleSheet } from "react-native";
 import { colors } from "../../constants";
 
 export const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+  },
   rootContainer: {
     flex: 1,
-    padding: 24,
     alignItems: "center",
   },
   imageContainer: {
-    width: 300,
-    height: 300,
-    borderRadius: 150,
-    borderWidth: 4,
     borderColor: colors.white,
     overflow: "hidden",
     margin: 25,
@@ -22,13 +20,18 @@ export const styles = StyleSheet.create({
   },
   summaryText: {
     fontFamily: "open-sans-regular",
-    fontSize: 24,
     textAlign: "center",
     marginBottom: 25,
   },
   highlight: {
     fontFamily: "open-sans-bold",
     color: colors.main500,
+  },
+  imageTextContainer: {
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
   },
 });
 
